@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { HiTrash } from "react-icons/hi";
+import { FaCheck } from "react-icons/fa";
 
 export function ToDo() {
   const [tasks, setTasks] = useState([]);
@@ -13,7 +14,7 @@ export function ToDo() {
 
   const addTask = () => {
     if (inputValue) {
-      setTasks([...tasks, inputValue]);
+      setTasks([...tasks, { task: inputValue, done: false }]);
       setInputValue("");
     }
   };
@@ -24,24 +25,44 @@ export function ToDo() {
     setTasks(newTasks);
   };
 
+  const completedTask = (index) => {
+    const newTasks = [...tasks];
+    newTasks[index].done = !newTasks[index].done;
+    setTasks(newTasks);
+    console.log(newTasks);
+  };
+
   return (
     <div className="max-w-md mx-auto mt-10">
       <h1 className="text-3xl font-bold mb-6">To-Do List</h1>
       <div className="border rounded-md overflow-hidden">
         {tasks.length === 0 && (
-          <div className="py-2 px-3 text-gray-600">No tasks, You are all caught up!</div>
+          <div className="py-2 px-3 text-gray-600">What needs to be done?</div>
         )}
         <ul>
-          {tasks.map((task, index) => (
+          {tasks.map((obj, index) => (
             <li
               key={index}
               className="flex items-center justify-between px-3 py-2 border-b hover:bg-gray-100 cursor-pointer"
             >
-              <span>{task}</span>
-              <HiTrash
-                className="h-5 w-5 text-gray-400 hover:text-red-500"
-                onClick={() => deleteTask(index)}
-              />
+              <span
+                className={obj.done ? "line-through mr-2" : "mr-2"}
+                onClick={() => completedTask(index)}
+              >
+                {obj.task}
+              </span>
+              <div className="flex">
+                <FaCheck
+                  className="h-5 w-5 text-green-500"
+                  onClick={() => {
+                    completedTask(index);
+                  }}
+                />
+                <HiTrash
+                  className="h-5 w-5 text-gray-400 hover:text-red-500"
+                  onClick={() => deleteTask(index)}
+                />
+              </div>
             </li>
           ))}
         </ul>
@@ -49,7 +70,7 @@ export function ToDo() {
           <input
             type="text"
             className="flex-grow border rounded-md py-1 px-2 mr-2"
-            placeholder="Add a task"
+            placeholder="What else needs to be done?"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleInputKeyDown}
