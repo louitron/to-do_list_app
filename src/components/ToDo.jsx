@@ -29,8 +29,9 @@ export function ToDo() {
     const newTasks = [...tasks];
     newTasks[index].done = !newTasks[index].done;
     setTasks(newTasks);
-    console.log(newTasks);
   };
+
+  const incompleteTasks = tasks.filter((task) => !task.done);
 
   return (
     <div className="max-w-md mx-auto">
@@ -66,21 +67,24 @@ export function ToDo() {
             </li>
           ))}
         </ul>
-        <div className="bg-gray-300 px-3 py-2 flex items-center">
-          <input
-            type="text"
-            className="flex-grow border rounded-md py-1 px-2 mr-2"
-            placeholder="What else needs to be done?"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyDown={handleInputKeyDown}
-          />
-          <button
-            className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-600"
-            onClick={addTask}
-          >
-            Add
-          </button>
+        <div className="bg-gray-300 px-3 py-2 flex items-center justify-between">
+          <span>{incompleteTasks.length} tasks left</span>
+          <div className="flex">
+            <input
+              type="text"
+              className="flex-grow border rounded-md py-1 px-2 mr-2"
+              placeholder="What else needs to be done?"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={handleInputKeyDown}
+            />
+            <button
+              className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-600"
+              onClick={addTask}
+            >
+              Add
+            </button>
+          </div>
         </div>
       </div>
     </div>
