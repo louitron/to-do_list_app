@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HiTrash } from "react-icons/hi";
 import { FaCheck } from "react-icons/fa";
 
-export function ToDo() {
+export function ShoppingList() {
   const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
@@ -34,10 +34,12 @@ export function ToDo() {
 
   return (
     <div className="max-w-md mx-auto">
-      <h1 className="text-3xl font-bold mb-6">To-Do List</h1>
+      <h1 className="text-3xl font-bold mb-6">Shopping List</h1>
       <div className="border rounded-md overflow-hidden">
         {tasks.length === 0 && (
-          <div className="py-2 px-3 text-gray-600">What needs to be done?</div>
+          <div className="py-2 px-3 text-gray-600">
+            What do you need to buy?
+          </div>
         )}
         <ul>
           {tasks.map((obj, index) => (
@@ -70,7 +72,7 @@ export function ToDo() {
           <input
             type="text"
             className="flex-grow border rounded-md py-1 px-2 mr-2"
-            placeholder="What else needs to be done?"
+            placeholder="What else do you need to buy?"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleInputKeyDown}
