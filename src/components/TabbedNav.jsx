@@ -50,7 +50,7 @@ export const TabbedNav = () => {
                 Business To-Do
               </a>
             </li>
-            <li className="-mb-px mr-2 w-1/3 last:mr-0 flex-auto text-center">
+            <li className="-mb-px mr-2 mt-2 w-1/3 last:mr-0 flex-auto text-center">
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
