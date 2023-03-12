@@ -12,7 +12,7 @@ export const TabbedNav = () => {
             className=" ps-0 flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
             role="tablist"
           >
-            <li className="-mb-px mr-2 last:mr-0 w-1/3 flex-auto text-center">
+            <li className="mr-2 last:mr-0 w-1/3 flex-auto text-center">
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
@@ -28,10 +28,10 @@ export const TabbedNav = () => {
                 href="#link1"
                 role="tablist"
               >
-                Personal To-Do
+                Personal
               </a>
             </li>
-            <li className="-mb-px mr-2 w-1/3 last:mr-0 flex-auto text-center me-0">
+            <li className="mr-2 w-1/3  flex-auto text-center me-0">
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
@@ -47,10 +47,10 @@ export const TabbedNav = () => {
                 href="#link2"
                 role="tablist"
               >
-                Business To-Do
+                Coding
               </a>
             </li>
-            <li className="-mb-px mr-2 mt-2 w-1/3 last:mr-0 flex-auto text-center">
+            <li className="mr-2 mt-2 w-1/3 last:mr-0 flex-auto text-center">
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
@@ -66,7 +66,7 @@ export const TabbedNav = () => {
                 href="#link3"
                 role="tablist"
               >
-                Shopping List
+                Shopping
               </a>
             </li>
           </ul>

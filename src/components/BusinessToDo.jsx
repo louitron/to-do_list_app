@@ -36,7 +36,7 @@ export function BusinessToDo() {
 
   return (
     <div className="max-w-md mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Business To-Do</h1>
+      <h1 className="text-3xl font-bold mb-6">Coding Task List</h1>
       <div className=" bg-gray-300 border rounded-md overflow-hidden">
         {tasks.length === 0 && (
           <div className="py-2 px-3 text-center  text-gray-600">
