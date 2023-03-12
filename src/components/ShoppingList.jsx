@@ -74,7 +74,7 @@ export function ShoppingList() {
           <input
             type="text"
             className="w-full text-center flex-grow border rounded-md py-1 px-2 mr-2"
-            placeholder="What else do you need to buy?"
+            placeholder="Enter item here"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleInputKeyDown}
@@ -85,7 +85,7 @@ export function ShoppingList() {
           >
             Add
           </button>
-          <span>{incompleteTasks.length} tasks left</span>
+          <span>{incompleteTasks.length} Items left to purchase left</span>
         </div>
       </div>
     </div>
