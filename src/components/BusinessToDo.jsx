@@ -40,7 +40,7 @@ export function BusinessToDo() {
       <div className=" bg-gray-300 border rounded-md overflow-hidden">
         {tasks.length === 0 && (
           <div className="py-2 px-3 text-center  text-gray-600">
-            Add Stuff and Get Down To Business
+            Work Stuff That Needs to Be Done
           </div>
         )}
         <ul>

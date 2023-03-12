@@ -40,7 +40,7 @@ export function ShoppingList() {
       <div className=" bg-gray-300 border rounded-md overflow-hidden">
         {tasks.length === 0 && (
           <div className="py-2 px-3 text-center  text-gray-600">
-            What do you need to buy today?
+            What do you need to buy?
           </div>
         )}
         <ul>
