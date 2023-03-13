@@ -40,7 +40,7 @@ export function BusinessToDo() {
       <div className=" bg-gray-300 border rounded-md overflow-hidden">
         {tasks.length === 0 && (
           <div className="py-2 px-3 text-center  text-gray-600">
-            Work Stuff That Needs to Be Done
+            What do you need to code today?
           </div>
         )}
         <ul>
@@ -74,7 +74,7 @@ export function BusinessToDo() {
           <input
             type="text"
             className="w-full text-center flex-grow border rounded-md py-1 px-2 mr-2"
-            placeholder="What other business needs to be done?"
+            placeholder="Enter Pending Code Here"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleInputKeyDown}

@@ -74,7 +74,7 @@ export function ToDo() {
           <input
             type="text"
             className="w-full text-center flex-grow border rounded-md py-1 px-2 mr-2"
-            placeholder="What else needs to be done?"
+            placeholder="Enter Task Here"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleInputKeyDown}
