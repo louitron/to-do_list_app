@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { HiTrash } from "react-icons/hi";
 import { FaCheck } from "react-icons/fa";
+import { useTodoList } from "./services/useToDoList";
 
 export function ToDo() {
-  const [tasks, setTasks] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-
+  const todo = useTodoList();
   const handleInputKeyDown = (e) => {
     if (e.key === "Enter") {
       addTask();
