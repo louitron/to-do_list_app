@@ -1,57 +1,50 @@
 import React, { useState } from "react";
 import { HiTrash } from "react-icons/hi";
 import { FaCheck } from "react-icons/fa";
+import useShoppingList from "./services/useShoppingList";
 
 export function ShoppingList() {
-  const [tasks, setTasks] = useState([]);
-  const [inputValue, setInputValue] = useState("");
+ const {
+  items, 
+  inputValue,
+  setInputValue,
+  deleteItem, 
+  completedPurchase, 
+  getIncompletePurchase,
+  addItem,
+ } = useShoppingList();
+
+ const handleInputChange = (e) => {
+  setInputValue(e.target.value);
+ };
+
 
   const handleInputKeyDown = (e) => {
     if (e.key === "Enter") {
-      addTask();
+      addItem();
     }
   };
 
-  const addTask = () => {
-    if (inputValue) {
-      setTasks([...tasks, { task: inputValue, done: false }]);
-      setInputValue("");
-    }
-  };
-
-  const deleteTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks.splice(index, 1);
-    setTasks(newTasks);
-  };
-
-  const completedTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks[index].done = !newTasks[index].done;
-    setTasks(newTasks);
-    console.log(newTasks);
-  };
-
-  const incompleteTasks = tasks.filter((task) => !task.done);
+  const incompletePurchase = getIncompletePurchase();
 
   return (
     <div className="max-w-md mx-auto">
       <h1 className="text-3xl font-bold mb-6">Shopping List</h1>
       <div className=" bg-gray-300 border rounded-md overflow-hidden">
-        {tasks.length === 0 && (
+        {items.length === 0 && (
           <div className="py-2 px-3 text-center  text-gray-600">
             What do you need to buy?
           </div>
         )}
         <ul>
-          {tasks.map((obj, index) => (
+          {items.map((obj, index) => (
             <li
               key={index}
               className="flex items-center justify-between px-3 py-2 border-b hover:bg-gray-100 cursor-pointer"
             >
               <span
                 className={obj.done ? "line-through mr-2" : "mr-2"}
-                onClick={() => completedTask(index)}
+                onClick={() => completedPurchase(index)}
               >
                 {obj.task}
               </span>
@@ -59,12 +52,12 @@ export function ShoppingList() {
                 <FaCheck
                   className="h-5 w-5 me-4 text-green-500"
                   onClick={() => {
-                    completedTask(index);
+                    completedPurchase(index);
                   }}
                 />
                 <HiTrash
                   className="h-5 w-5 text-gray-400 hover:text-red-500"
-                  onClick={() => deleteTask(index)}
+                  onClick={() => deleteItem(index)}
                 />
               </div>
             </li>
@@ -76,16 +69,16 @@ export function ShoppingList() {
             className="w-full text-center flex-grow border rounded-md py-1 px-2 mr-2"
             placeholder="Enter item here"
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={handleInputChange}
             onKeyDown={handleInputKeyDown}
           />
           <button
             className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-600"
-            onClick={addTask}
+            onClick={addItem}
           >
             Add
           </button>
-          <span>{incompleteTasks.length} Items left to purchase</span>
+          <span>{incompletePurchase.length} Items left to purchase</span>
         </div>
       </div>
     </div>
