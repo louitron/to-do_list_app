@@ -12,13 +12,13 @@ export const TabbedNav = () => {
             className=" ps-0 flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
             role="tablist"
           >
-            <li className="mr-2 last:mr-0 w-1/3 flex-auto text-center">
+            <li className=" last:mr-0 flex-auto text-center">
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 1
-                    ? "text-white bg-blue-600"
-                    : "text-slate-600 bg-white")
+                    ? "text-white bg-slate-600"
+                    : "text-slate-600 bg-black")
                 }
                 onClick={(e) => {
                   e.preventDefault();
@@ -31,13 +31,13 @@ export const TabbedNav = () => {
                 Personal
               </a>
             </li>
-            <li className="mr-2 w-1/3  flex-auto text-center me-0">
+            <li className=" flex-auto text-center me-0">
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 2
-                    ? "text-white bg-blue-600"
-                    : "text-slate-600 bg-white")
+                    ? "text-white bg-slate-600"
+                    : "text-slate-600 bg-black")
                 }
                 onClick={(e) => {
                   e.preventDefault();
@@ -50,13 +50,13 @@ export const TabbedNav = () => {
                 Coding
               </a>
             </li>
-            <li className="mr-2 mt-2 w-1/3 last:mr-0 flex-auto text-center">
+            <li className="last:mr-0 flex-auto text-center">
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 3
-                    ? "text-white bg-blue-600"
-                    : "text-slate-600 bg-white")
+                    ? "text-white bg-slate-600"
+                    : "text-slate-600 bg-black")
                 }
                 onClick={(e) => {
                   e.preventDefault();
@@ -70,17 +70,28 @@ export const TabbedNav = () => {
               </a>
             </li>
           </ul>
-          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-            <div className="px-4 py-5 flex-auto">
-              <div className="tab-content tab-space">
-                <div className={openTab === 1 ? "block" : "hidden"} id="link1">
-                  <ToDo />
-                </div>
-                <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                  <BusinessToDo />
-                </div>
-                <div className={openTab === 3 ? "block" : "hidden"} id="link3">
-                  <ShoppingList />
+          <div className="my-10 relative mx-auto grid  w-80 max-w-lg place-items-center bg-[linear-gradient(var(--rotate),var(--tw-gradient-from)_33%,rgb(0_0_255)_66%,var(--tw-gradient-to))] from-blue-600 via-blue-600 to-blue-700 animate-rotate  shadow-sm ring-1 ring-gray-900/5 sm:mx-auto  rounded-lg p-2 before:absolute before:inset-0 before:bg-[linear-gradient(var(--rotate),var(--tw-gradient-from)_33%,rgb(0_0_255)_66%,var(--tw-gradient-to))] before:from-blue-500 before:via-blue-700 before:to-blue-900 before:z-0 before:blur-2xl before:hover:blur-3xl before:hover:scale-90 before:transition-all before:animate-rotate  before:w-full before:h-full ">
+            <div className="relative flex flex-col min-w-0 break-words bg-black w-full mb-6 shadow-lg rounded ">
+              <div className="px-4 py-5 flex-auto">
+                <div className="tab-content tab-space">
+                  <div
+                    className={openTab === 1 ? "block" : "hidden"}
+                    id="link1"
+                  >
+                    <ToDo />
+                  </div>
+                  <div
+                    className={openTab === 2 ? "block" : "hidden"}
+                    id="link2"
+                  >
+                    <BusinessToDo />
+                  </div>
+                  <div
+                    className={openTab === 3 ? "block" : "hidden"}
+                    id="link3"
+                  >
+                    <ShoppingList />
+                  </div>
                 </div>
               </div>
             </div>

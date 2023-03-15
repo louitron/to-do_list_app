@@ -41,7 +41,9 @@ export function ToDo() {
               className="flex items-center justify-between px-3 py-2 border-b hover:bg-gray-100 cursor-pointer"
             >
               <span
-                className={obj.done ? "line-through mr-2" : "mr-2"}
+                className={
+                  obj.done ? "line-through mr-2 overflow-auto" : "mr-2 overflow-auto"
+                }
                 onClick={() => completeTask(index)}
               >
                 {obj.task}

@@ -10,6 +10,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         "gradient-conic": "conic-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(var(--conic-position), var(--tw-gradient-stops))",
       },
       keyframes: {
         disco: {
@@ -35,7 +37,7 @@ module.exports = {
         wiggle: "wiggle 1s ease-in-out infinite",
         "spin-slow": "spin 3s linear infinite",
         disco: "disco 1.5s linear infinite",
-        rotate: "rotate 5s linear infinite",
+        rotate: "rotate 30s linear infinite",
       },
     },
   },

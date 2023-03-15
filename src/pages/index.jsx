@@ -8,7 +8,6 @@ export default function Home() {
       <div className="flex overflow-auto w-screen justify-center pt-10 h-screen bg-gradient-to-t from-black to-slate-800">
         <TabbedNav />;
       </div>
-      
     </div>
   );
 }
