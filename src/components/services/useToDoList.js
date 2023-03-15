@@ -1,33 +1,39 @@
 import { create } from "zustand";
 
-export const useTodoList = create((set) => ({
-  task: "", //Use this in place of inputValue
-  list: [], //Use this in place of tasks
+const useToDoList = create((set, get) => ({
+  tasks: [],
+  inputValue: '',
 
-  changeTask: (value) => {
-    set({ task: value });
-  },
+  setInputValue: (value) => set({ inputValue: value }),
 
   addTask: () => {
-    set((store) => ({
-      list: [...store.list, { task: store.task, done: false }],
-      task: "",
-    }));
+    const { inputValue, tasks } = get();
+    if (inputValue) {
+      set({
+        tasks: [...tasks, { task: inputValue, done: false }],
+        inputValue: '',
+      });
+    }
   },
 
   deleteTask: (index) => {
-    set((store) => {
-      const newTasks = [...store.list];
-      newTasks.splice(index, 1);
-      list: newTasks;
-    });
+    const { tasks } = get();
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    set({ tasks: newTasks });
   },
 
   completeTask: (index) => {
-    set((store) => {
-      const newList = [...store.list];
-      newList[index].done = true;
-      return { list: newList };
-    });
+    const { tasks } = get();
+    const newTasks = [...tasks];
+    newTasks[index].done = !newTasks[index].done;
+    set({ tasks: newTasks });
+  },
+
+  getIncompleteTasks: () => {
+    const { tasks } = get();
+    return tasks.filter((task) => !task.done);
   },
 }));
+
+export default useToDoList;

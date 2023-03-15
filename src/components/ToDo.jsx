@@ -1,38 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import { HiTrash } from "react-icons/hi";
 import { FaCheck } from "react-icons/fa";
-import { useTodoList } from "./services/useToDoList";
+import useToDoList from "./services/useToDoList";
 
 export function ToDo() {
-  const todo = useTodoList();
+  const {
+    tasks,
+    inputValue,
+    setInputValue,
+    addTask,
+    deleteTask,
+    completeTask,
+    getIncompleteTasks,
+  } = useToDoList();
+
   const handleInputKeyDown = (e) => {
     if (e.key === "Enter") {
       addTask();
     }
   };
 
-  const addTask = () => {
-    if (inputValue) {
-      setTasks([...tasks, { task: inputValue, done: false }]);
-      setInputValue("");
-    }
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
   };
 
-  const deleteTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks.splice(index, 1);
-    setTasks(newTasks);
-  };
-
-  const completedTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks[index].done = !newTasks[index].done;
-    setTasks(newTasks);
-    console.log(newTasks);
-  };
-
-  const incompleteTasks = tasks.filter((task) => !task.done);
-
+  const incompleteTasks = getIncompleteTasks();
   return (
     <div className="max-w-md mx-auto">
       <h1 className="text-3xl font-bold mb-6">To-Do List</h1>
@@ -50,7 +42,7 @@ export function ToDo() {
             >
               <span
                 className={obj.done ? "line-through mr-2" : "mr-2"}
-                onClick={() => completedTask(index)}
+                onClick={() => completeTask(index)}
               >
                 {obj.task}
               </span>
@@ -58,7 +50,7 @@ export function ToDo() {
                 <FaCheck
                   className="h-5 w-5 me-4 text-green-500"
                   onClick={() => {
-                    completedTask(index);
+                    completeTask(index);
                   }}
                 />
                 <HiTrash
@@ -75,7 +67,7 @@ export function ToDo() {
             className="w-full text-center flex-grow border rounded-md py-1 px-2 mr-2"
             placeholder="Enter Task Here"
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={handleInputChange}
             onKeyDown={handleInputKeyDown}
           />
           <button
