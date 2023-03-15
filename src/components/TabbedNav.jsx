@@ -17,8 +17,8 @@ export const TabbedNav = () => {
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 1
-                    ? "text-white bg-slate-600"
-                    : "text-slate-600 bg-black")
+                    ? "text-white bg-slate-900"
+                    : "text-slate-500 bg-black")
                 }
                 onClick={(e) => {
                   e.preventDefault();
@@ -36,8 +36,8 @@ export const TabbedNav = () => {
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 2
-                    ? "text-white bg-slate-600"
-                    : "text-slate-600 bg-black")
+                    ? "text-white bg-slate-900"
+                    : "text-slate-500 bg-black")
                 }
                 onClick={(e) => {
                   e.preventDefault();
@@ -55,8 +55,8 @@ export const TabbedNav = () => {
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 3
-                    ? "text-white bg-slate-600"
-                    : "text-slate-600 bg-black")
+                    ? "text-white bg-slate-900"
+                    : "text-slate-500 bg-black")
                 }
                 onClick={(e) => {
                   e.preventDefault();
