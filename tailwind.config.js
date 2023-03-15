@@ -8,6 +8,23 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "gradient-conic": "conic-gradient(var(--tw-gradient-stops))",
+      },
+      keyframes: {
+        disco: {
+          "0%": { transform: "translateY(-50%) rotate(0deg)" },
+          "100%": { transform: "translateY(-50%) rotate(360deg)" },
+        },
+        rotate: {
+          "0%": {
+            "--rotate": "0deg",
+          },
+          "100%": {
+            "--rotate": "360deg",
+          },
+        },
+      },
       width: {
         cardw: "325px",
       },
@@ -15,8 +32,10 @@ module.exports = {
         cardh: "500px",
       },
       animation: {
-        "wiggle": 'wiggle 1s ease-in-out infinite',
+        wiggle: "wiggle 1s ease-in-out infinite",
         "spin-slow": "spin 3s linear infinite",
+        disco: "disco 1.5s linear infinite",
+        rotate: "rotate 5s linear infinite",
       },
     },
   },
