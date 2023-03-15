@@ -12,6 +12,7 @@ export function BusinessToDo() {
     deleteTask,
     completedTask,
     getIncompleteTasks,
+    clearAllTasks,
   } = useCodingToDo();
 
   const handleInputKeyDown = (e) => {
@@ -89,6 +90,14 @@ export function BusinessToDo() {
             {incompleteTasks.length} tasks left
           </span>
         </div>
+      </div>
+      <div className="w-full flex justify-center">
+        <button
+          className="text-white border-2 border-red-900 mt-2 p-1 bg-gradient-to-b from-gray-600 to-black rounded text-sm font-light"
+          onClick={clearAllTasks}
+        >
+          Clear all Tasks
+        </button>
       </div>
     </div>
   );

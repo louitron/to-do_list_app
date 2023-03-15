@@ -31,6 +31,12 @@ const useShoppingList = create((set, get) => ({
         return items.filter((item) => !item.done);
     },
 
+    clearAllItems: () => {
+        const { items } = get();
+        const deletedItems = [];
+        set({ items: deletedItems });
+      }
+
 
 }));
 

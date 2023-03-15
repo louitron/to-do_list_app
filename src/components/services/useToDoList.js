@@ -34,6 +34,16 @@ const useToDoList = create((set, get) => ({
     const { tasks } = get();
     return tasks.filter((task) => !task.done);
   },
+  clearAllItems: () => {
+    const { tasks } = get();
+    const deletedTasks = [];
+    set({ tasks: deletedTasks });
+  },
+  clearAllTasks: () => {
+    const { tasks } = get();
+    const deletedTasks = [];
+    set({ tasks: deletedTasks });
+  },
 }));
 
 export default useToDoList;

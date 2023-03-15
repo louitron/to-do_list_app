@@ -12,6 +12,7 @@ export function ShoppingList() {
     completedPurchase,
     getIncompletePurchase,
     addItem,
+    clearAllItems,
   } = useShoppingList();
 
   const handleInputChange = (e) => {
@@ -83,10 +84,18 @@ export function ShoppingList() {
               class="absolute p inset-0 z-0 scale-x-[2.0] blur before:absolute before:inset-0 before:top-1/2 before:aspect-square before:animate-disco before:bg-button-gradient-conic before:from-purple-700 before:via-red-500 before:to-amber-400"
             />
           </button>
-          <span className="text-white">
+          <span className="text-white text-sm font-light">
             {incompletePurchase.length} Items left to purchase
           </span>
         </div>
+      </div>
+      <div className="w-full flex justify-center">
+        <button
+          className="text-white border-2 border-red-900 mt-2 p-1 bg-gradient-to-b from-gray-600 to-black rounded text-sm font-light"
+          onClick={clearAllItems}
+        >
+          Clear all Items
+        </button>
       </div>
     </div>
   );

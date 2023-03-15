@@ -34,6 +34,11 @@ const useCodingToDo = create((set, get) => ({
     const { tasks } = get();
     return tasks.filter((task) => !task.done);
   },
+  clearAllTasks: () => {
+    const { tasks } = get();
+    const deletedTasks = [];
+    set({ tasks: deletedTasks });
+  },
 }));
 
 export default useCodingToDo;

@@ -37,7 +37,7 @@ module.exports = {
         wiggle: "wiggle 1s ease-in-out infinite",
         "spin-slow": "spin 3s linear infinite",
         disco: "disco 1.5s linear infinite",
-        rotate: "rotate 30s linear infinite",
+        rotate: "rotate 6s linear infinite",
       },
     },
   },
