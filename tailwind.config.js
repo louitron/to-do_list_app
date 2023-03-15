@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-conic": "conic-gradient(var(--tw-gradient-stops))",
+        "button-gradient-conic": "conic-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(var(--conic-position), var(--tw-gradient-stops))",
       },
