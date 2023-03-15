@@ -39,7 +39,7 @@ export function ShoppingList() {
           {items.map((obj, index) => (
             <li
               key={index}
-              className="flex items-center justify-between px-3 py-2 border-b hover:bg-gray-100 cursor-pointer"
+              className="flex items-center justify-between px-3 py-2 border-b hover:bg-blue-600 cursor-pointer"
             >
               <span
                 className={obj.done ? "line-through mr-2" : "mr-2"}
