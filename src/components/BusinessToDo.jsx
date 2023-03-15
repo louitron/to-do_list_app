@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import { HiTrash } from "react-icons/hi";
 import { FaCheck } from "react-icons/fa";
+import useCodingToDo from "./services/useCodingToDo";
 
 export function BusinessToDo() {
-  const [tasks, setTasks] = useState([]);
-  const [inputValue, setInputValue] = useState("");
+  const {
+    tasks,
+    inputValue,
+    addTask,
+    setInputValue,
+    deleteTask,
+    completedTask,
+    getIncompleteTasks,
+  } = useCodingToDo();
 
   const handleInputKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -12,27 +20,11 @@ export function BusinessToDo() {
     }
   };
 
-  const addTask = () => {
-    if (inputValue) {
-      setTasks([...tasks, { task: inputValue, done: false }]);
-      setInputValue("");
-    }
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
   };
 
-  const deleteTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks.splice(index, 1);
-    setTasks(newTasks);
-  };
-
-  const completedTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks[index].done = !newTasks[index].done;
-    setTasks(newTasks);
-    console.log(newTasks);
-  };
-
-  const incompleteTasks = tasks.filter((task) => !task.done);
+  const incompleteTasks = getIncompleteTasks();
 
   return (
     <div className="max-w-md mx-auto">
@@ -76,7 +68,7 @@ export function BusinessToDo() {
             className="w-full text-center flex-grow border rounded-md py-1 px-2 mr-2"
             placeholder="Enter Pending Code Here"
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={handleInputChange}
             onKeyDown={handleInputKeyDown}
           />
           <button
