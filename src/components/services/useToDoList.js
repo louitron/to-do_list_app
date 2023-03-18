@@ -26,7 +26,7 @@ const useToDoList = create(
         set({ tasks: newTasks });
       },
 
-      completedTask: (index) => {
+      completeTask: (index) => {
         const { tasks } = get();
         const newTasks = [...tasks];
         newTasks[index].done = !newTasks[index].done;
