@@ -57,6 +57,17 @@ const useToDoList = create(
             }
           });
       },
+      updateDataAPI: () => {
+        const { tasks } = get();
+
+        fetch("https://assets.breatheco.de/apis/fake/todos/user/louitron", {
+          method: "PUT",
+          headers: {
+            "Content-type" : "application/json",
+          },
+          body: JSON.stringify(tasks),
+        })
+      },
       
     }),
     {
