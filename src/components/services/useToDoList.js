@@ -42,10 +42,25 @@ const useToDoList = create(
         const deletedTasks = [];
         set({ tasks: deletedTasks });
       },
+      getTodosFromAPI: () => {
+        const options = { method: "GET" };
+      
+        fetch("https://assets.breatheco.de/apis/fake/todos/user/louitron", options)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            if (Array.isArray(data)) {
+              set({ tasks: data });
+            } else {
+              console.error("API response is not an array");
+            }
+          });
+      },
+      
     }),
     {
       name: "todo-storage", // name of the item in the storage (must be unique)
-      storage: createJSONStorage(() => sessionStorage2), // (optional) by default, 'localStorage' is used
     }
   )
 );

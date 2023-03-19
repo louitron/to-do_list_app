@@ -2,6 +2,7 @@ import React from "react";
 import { HiTrash } from "react-icons/hi";
 import { FaCheck } from "react-icons/fa";
 import useToDoList from "./services/useToDoList";
+import { useEffect } from "react";
 
 export function ToDo() {
   const {
@@ -13,7 +14,14 @@ export function ToDo() {
     completeTask,
     getIncompleteTasks,
     clearAllTasks,
+    getTodosFromAPI
   } = useToDoList();
+
+  
+  useEffect(() => {
+    getTodosFromAPI();
+  }, []);
+
 
   const handleInputKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -49,7 +57,7 @@ export function ToDo() {
                 }
                 onClick={() => completeTask(index)}
               >
-                {obj.task}
+                {obj.label}
               </span>
               <div className="flex">
                 <FaCheck
