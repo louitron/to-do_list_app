@@ -3,6 +3,10 @@ import { HiTrash } from "react-icons/hi";
 import { FaCheck } from "react-icons/fa";
 import useToDoList from "./services/useToDoList";
 import { useEffect } from "react";
+import { auth } from "src/firebase.js";
+import { signInAnonymously } from "src/firebase.js"; // Import signInAnonymously from firebase.js
+
+
 
 export function ToDo() {
   const {
@@ -14,13 +18,20 @@ export function ToDo() {
     completeTask,
     getIncompleteTasks,
     clearAllTasks,
-    getTodosFromAPI
+    getTodosFromAPI,
   } = useToDoList();
 
-  
   useEffect(() => {
-    getTodosFromAPI();
+    const signInAndFetchTodos = async () => {
+      if (auth) {
+        await signInAnonymously(auth); // Pass auth object as an argument
+        getTodosFromAPI();
+      }
+    };
+  
+    signInAndFetchTodos();
   }, []);
+  
 
 
   const handleInputKeyDown = (e) => {
@@ -85,14 +96,14 @@ export function ToDo() {
           />
           <button
             onClick={addTask}
-            class="relative overflow-hidden rounded-lg mt-2 bg-black px-20 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2"
+            className="relative overflow-hidden rounded-lg mt-2 bg-black px-20 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2"
           >
-            <span class="absolute inset-px z-10 grid place-items-center rounded-lg bg-black bg-gradient-to-t from-neutral-800 text-neutral-400">
+            <span className="absolute inset-px z-10 grid place-items-center rounded-lg bg-black bg-gradient-to-t from-neutral-800 text-neutral-400">
               Add
             </span>
             <span
               aria-hidden
-              class="absolute p inset-0 z-0 scale-x-[2.0] blur before:absolute before:inset-0 before:top-1/2 before:aspect-square before:animate-disco before:bg-button-gradient-conic before:from-purple-700 before:via-red-500 before:to-amber-400"
+              className="absolute p inset-0 z-0 scale-x-[2.0] blur before:absolute before:inset-0 before:top-1/2 before:aspect-square before:animate-disco before:bg-button-gradient-conic before:from-purple-700 before:via-red-500 before:to-amber-400"
             />
           </button>
           <span className="text-white">

@@ -1,5 +1,9 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { auth, db } from "@/firebase";
+
+console.log('db in useToDoList:', db); 
+
 
 const useToDoList = create(
   persist(
@@ -10,27 +14,30 @@ const useToDoList = create(
       setInputValue: (value) => set({ inputValue: value }),
 
       addTask: () => {
-        const { inputValue, tasks } = get();
+        const { inputValue, tasks, updateDataAPI } = get();
         if (inputValue) {
           set({
-            tasks: [...tasks, { task: inputValue, done: false }],
+            tasks: [...tasks, { label: inputValue, done: false }],
             inputValue: "",
           });
+          updateDataAPI();
         }
       },
 
       deleteTask: (index) => {
-        const { tasks } = get();
+        const { tasks, updateDataAPI } = get();
         const newTasks = [...tasks];
         newTasks.splice(index, 1);
         set({ tasks: newTasks });
+        updateDataAPI();
       },
 
       completeTask: (index) => {
-        const { tasks } = get();
+        const { tasks, updateDataAPI } = get();
         const newTasks = [...tasks];
         newTasks[index].done = !newTasks[index].done;
         set({ tasks: newTasks });
+        updateDataAPI();
       },
 
       getIncompleteTasks: (index) => {
@@ -38,37 +45,31 @@ const useToDoList = create(
         return tasks.filter((task) => !task.done);
       },
       clearAllTasks: () => {
-        const { tasks } = get();
+        const { tasks, updateDataAPI } = get();
         const deletedTasks = [];
         set({ tasks: deletedTasks });
+        updateDataAPI();
       },
       getTodosFromAPI: () => {
-        const options = { method: "GET" };
-      
-        fetch("https://assets.breatheco.de/apis/fake/todos/user/louitron", options)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            if (Array.isArray(data)) {
-              set({ tasks: data });
+        if (typeof window !== "undefined" && auth.currentUser && db) {
+          const todoRef = db.collection("todos").doc(auth.currentUser.uid);
+          todoRef.get().then((doc) => {
+            if (doc.exists) {
+              set({ tasks: doc.data().tasks });
             } else {
-              console.error("API response is not an array");
+              todoRef.set({ tasks: [] });
             }
           });
+        }
       },
-      updateDataAPI: () => {
-        const { tasks } = get();
 
-        fetch("https://assets.breatheco.de/apis/fake/todos/user/louitron", {
-          method: "PUT",
-          headers: {
-            "Content-type" : "application/json",
-          },
-          body: JSON.stringify(tasks),
-        })
+      updateDataAPI: () => {
+        if (typeof window !== "undefined" && auth.currentUser && db) {
+          const todoRef = db.collection("todos").doc(auth.currentUser.uid);
+          const { tasks } = get();
+          todoRef.set({ tasks: tasks });
+        }
       },
-      
     }),
     {
       name: "todo-storage", // name of the item in the storage (must be unique)
