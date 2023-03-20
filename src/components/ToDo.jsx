@@ -1,12 +1,9 @@
 import React from "react";
+import { useEffect } from "react";
 import { HiTrash } from "react-icons/hi";
 import { FaCheck } from "react-icons/fa";
 import useToDoList from "./services/useToDoList";
-import { useEffect } from "react";
-import { auth } from "src/firebase.js";
-import { signInAnonymously } from "src/firebase.js"; // Import signInAnonymously from firebase.js
-
-
+import { auth } from "@/firebase";
 
 export function ToDo() {
   const {
@@ -18,21 +15,24 @@ export function ToDo() {
     completeTask,
     getIncompleteTasks,
     clearAllTasks,
-    getTodosFromAPI,
   } = useToDoList();
 
   useEffect(() => {
-    const signInAndFetchTodos = async () => {
-      if (auth) {
-        await signInAnonymously(auth); // Pass auth object as an argument
-        getTodosFromAPI();
-      }
-    };
-  
-    signInAndFetchTodos();
-  }, []);
-  
+    if (auth.currentUser) {
+      const unsubscribe = onSnapshot(
+        doc(getFirestore(), "users", auth.currentUser.uid),
+        (doc) => {
+          if (doc.exists()) {
+            set({ tasks: doc.data().tasks });
+          }
+        }
+      );
 
+      return () => {
+        unsubscribe();
+      };
+    }
+  }, []);
 
   const handleInputKeyDown = (e) => {
     if (e.key === "Enter") {

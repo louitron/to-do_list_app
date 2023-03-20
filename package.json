@@ -15,6 +15,7 @@
     "eslint-config-next": "13.2.3",
     "firebase": "^9.18.0",
     "firebase-tools": "^11.24.1",
+    "global": "^4.4.0",
     "next": "^13.2.4",
     "postcss": "^8.4.21",
     "react": "^18.2.0",

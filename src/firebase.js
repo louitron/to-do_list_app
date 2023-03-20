@@ -1,10 +1,13 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInAnonymously as firebaseSignInAnonymously } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getAnalytics, isSupported } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { getAnalytics } from "firebase/analytics";
 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDtEr7J6Z2y8qOqDw6TR_mLNacrhWUMy2o",
   authDomain: "todo-list2023.firebaseapp.com",
@@ -12,33 +15,15 @@ const firebaseConfig = {
   storageBucket: "todo-list2023.appspot.com",
   messagingSenderId: "818414082246",
   appId: "1:818414082246:web:352e74669036c467c85fc7",
-  measurementId: "G-9DX6FQLFPX"
+  measurementId: "G-9DX6FQLFPX",
 };
 
-let auth, db, analytics;
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-if (typeof window !== 'undefined') {
-  const app = initializeApp(firebaseConfig);
-  auth = getAuth(app);
-  db = getFirestore(app);
-  console.log('db:', db);
-
-  // Check if Firebase Analytics is supported in the current environment
-  isSupported().then((supported) => {
-    if (supported) {
-      analytics = getAnalytics(app);
-    }
-  });
+if (typeof window !== "undefined") {
+  const { getAnalytics } = require("firebase/analytics");
+  getAnalytics(app);
 }
 
-export async function signInAnonymously(authInstance) {
-  if (authInstance) {
-    await firebaseSignInAnonymously(authInstance);
-  }
-}
-
-export function getDbInstance() {
-  return db;
-}
-
-export { auth, analytics };
+export const auth = getAuth(app);
