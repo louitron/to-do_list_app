@@ -46,18 +46,18 @@ export const SignInButton = () => {
   };
 
   return (
-    <div className="flex w-full mt-5 flex-col items-center justify-center bg-black">
+    <div className="flex w-full flex-col items-center justify-center bg-black">
       {!isSignedIn ? (
         <button
           onClick={handleSignIn}
-          className="relative overflow-hidden rounded-lg bg-black px-20 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2"
+          className="text-white relative overflow-hidden rounded-lg bg-black px-20 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2"
         >
           Sign In
         </button>
       ) : (
         <button
           onClick={handleSignOut}
-          className="relative overflow-hidden rounded-lg bg-black px-20 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2"
+          className="text-white relative overflow-hidden rounded-lg bg-black px-20 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2"
         >
           Sign Out
         </button>
