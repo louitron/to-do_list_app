@@ -1,4 +1,21 @@
+import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/firebase";
+
 export const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const signUp = (e) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="relative flex  flex-col justify-center overflow-hidden py-6 sm:py-12">
       <div className="absolute inset-0 bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
@@ -11,7 +28,7 @@ export const SignUp = () => {
             </p>
           </div>
           <div className="mt-8">
-            <form action="">
+            <form action="" onSubmit={signUp}>
               <div className="relative mt-10">
                 <input
                   type="email"
@@ -20,6 +37,8 @@ export const SignUp = () => {
                   placeholder="Email Address"
                   className="peer w-full rounded-md border border-gray-300 px-3 py-2.5 shadow shadow-gray-100 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
                   autoComplete="off"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <label
                   htmlFor="email"
@@ -34,6 +53,8 @@ export const SignUp = () => {
                   name="password"
                   id="password"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="peer peer w-full rounded-md border border-gray-300 px-3 py-2.5 shadow shadow-gray-100 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
                 />
                 <label
