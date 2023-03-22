@@ -1,4 +1,5 @@
 import useAuthentication from "../services/useAuthentication";
+import Link from "next/link";
 
 export const SignUp = () => {
   const { email, password, setEmail, setPassword, signUp } =
@@ -53,12 +54,14 @@ export const SignUp = () => {
                 </label>
               </div>
               <div className="my-6">
-                <button
-                  type="submit"
-                  className="w-full rounded-md bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none"
-                >
-                  Sign up
-                </button>
+                <Link href="/success">
+                  <button
+                    type="submit"
+                    className="w-full rounded-md bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none"
+                  >
+                    Sign up
+                  </button>
+                </Link>
               </div>
             </form>
           </div>

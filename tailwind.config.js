@@ -46,6 +46,7 @@ module.exports = {
         "spin-slow": "spin 3s linear infinite",
         disco: "disco 1.5s linear infinite",
         rotate: "rotate 6s linear infinite",
+        torch: "torch 7s infinite",
       },
     },
   },
