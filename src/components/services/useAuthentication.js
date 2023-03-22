@@ -2,13 +2,16 @@ import { create } from "zustand";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signOut,
+  signOut, signInAnonymously,
 } from "firebase/auth";
 import { auth } from "@/firebase";
 
 const useAuthentication = create((set) => ({
   email: "",
   password: "",
+  isSignedIn:"",
+
+  setIsSignedIn: ((isSignedIn) => set({ isSignedIn })),
 
   setEmail: (email) => set({ email }),
   setPassword: (password) => set({ password }),
@@ -44,6 +47,15 @@ const useAuthentication = create((set) => ({
             console.log(error);
         });
   },
+  anonymousSignIn: () => {
+    signInAnonymously(auth)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            console.log("User data:", user);
+        }).catch((error) => {
+            console.log("Error signing in anonymously", error);
+        })
+  }
 }));
 
 export default useAuthentication;

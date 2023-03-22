@@ -1,7 +1,5 @@
 import React from "react";
 import { TabbedNav } from "@/components/TabbedNav";
-import { SignUp } from "@/components/auth/SignUp";
-import { SignIn } from "@/components/auth/SignIn";
 
 export default function Home() {
   return (

@@ -1,7 +1,7 @@
 import useAuthentication from "../services/useAuthentication";
 
 export const SignIn = () => {
-  const { email, password, setEmail, setPassword, signUp } =
+  const { email, password, setEmail, setPassword, signIn } =
     useAuthentication();
 
   return (
