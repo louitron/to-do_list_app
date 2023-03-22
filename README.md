@@ -1,44 +1,15 @@
-# Hello World with React boilerplate
+Simple To-Do App made to help keep track of pending tasks. Added authentication functionality so you can check your what's left to do on any device. Made using next.js, react, tailwindCSS, and firebase.
 
-Start coding a react application
 
-> If you are working locally instead of using codespaces or gitpod, please follow [local installation steps].(#local-installation) and come back to this part of the readme.
+Features:
+    -add/delete tasks
+    -check off completed tasks as you go
+    -see how many tasks you have remaining
+    -clear all tasks with a single button
+    -create an account/sign in to save your to-do list
 
-## How to start coding?
-
-- Install the packages with `$ yarn`.
-- Run the webpack server with `$ yarn dev`
-
-You can update the `src/styles/globals.css` or `src/pages/index.js` depending on your needs.
-Add more files into your, `src/components` or styles folder as you need them.
-
-## Local Installation (skip if you are working on codespaces or gitpod)
-
-Download the boilerplate using git
-
-```
-$ git clone https://github.com/4GeeksAcademy/react-hello.git
-$ cd react-hello
-```
-
-## Publish your website!
-
-This boilerplate is 100% compatible with the free [github pages](https://pages.github.com/) and [vercel](https://vercel.com/) hosting.
-
-It takes just 2 minutes to deploy, [click here to start the process](https://github.com/4GeeksAcademy/react-hello/blob/master/docs/DEPLOY.md).
-
-## Other features
-
-- Automatic Code Formatting: Use of [Prettier](https://prettier.io/) for automatic code indentation and formatting.
-- Error reporting: Use of [eslint](https://eslint.org/) for better error reporting.
-- Hot Deploy: Use of [Webpack Development Server](https://webpack.js.org/configuration/dev-server/) for hot deploy and live reload.
-- One-command publish of the code to github pages with `npm run deploy:github`.
-- Babel 7 (really fast).
-
-### Contributors
-
-This template was built as part of the [Full Stack Developer course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer) 
-at [4Geeks Academy Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by 
-[Ernesto Freyre](https://twitter.com/efreyreg)
-
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+Upcoming features:
+    -set due dates for tasks
+    -share your list
+    -export your list
+    -customize your to-do list and create multiple lists
