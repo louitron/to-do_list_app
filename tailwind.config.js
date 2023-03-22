@@ -26,6 +26,14 @@ module.exports = {
             "--rotate": "360deg",
           },
         },
+        torch: {
+          from: {
+            backgroundPosition: "-100% 0",
+          },
+          to: {
+            backgroundPosition: "200% 0",
+          },
+        },
       },
       width: {
         cardw: "325px",

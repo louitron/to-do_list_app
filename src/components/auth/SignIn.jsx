@@ -66,7 +66,7 @@ export const SignIn = () => {
               <p className="text-center text-sm text-gray-500">
                 Don&#x27;t have an account yet?{" "}
                 <Link
-                  href="/signUp"
+                  href="/createAccount"
                   className="font-semibold text-gray-600 hover:underline focus:text-gray-800 focus:outline-none"
                 >
                   Sign up
