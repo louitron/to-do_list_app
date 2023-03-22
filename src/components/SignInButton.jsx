@@ -5,7 +5,7 @@ import useAuthentication from "./services/useAuthentication";
 import Link from "next/link";
 
 export const SignInButton = () => {
-  const { isSignedIn, setIsSignedIn } = useAuthentication();
+  const { isSignedIn, setIsSignedIn, signOut } = useAuthentication();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -27,7 +27,7 @@ export const SignInButton = () => {
         </Link>
       ) : (
         <button
-          onClick={handleSignOut}
+          onClick={signOut}
           className="text-white relative overflow-hidden rounded-lg bg-black px-20 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2"
         >
           Sign Out

@@ -54,14 +54,14 @@ export const SignUp = () => {
                 </label>
               </div>
               <div className="my-6">
-                <Link href="/success">
-                  <button
-                    type="submit"
-                    className="w-full rounded-md bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none"
-                  >
-                    Sign up
-                  </button>
-                </Link>
+                {/* <Link href="/success"> */}
+                <button
+                  type="submit"
+                  className="w-full rounded-md bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none"
+                >
+                  Sign up
+                </button>
+                {/* </Link> */}
               </div>
             </form>
           </div>
