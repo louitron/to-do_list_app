@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
-import { getFirestore, doc, setDoc, onSnapshot } from "firebase/firestore";
+import { persist } from "zustand/middleware";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 import { auth } from "@/firebase";
 

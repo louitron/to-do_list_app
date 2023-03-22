@@ -1,21 +1,8 @@
-import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/firebase";
+import useAuthentication from "../services/useAuthentication";
 
 export const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const signIn = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const { email, password, setEmail, setPassword, signUp } =
+    useAuthentication();
 
   return (
     <div className="relative flex  flex-col justify-center overflow-hidden py-6 sm:py-12">

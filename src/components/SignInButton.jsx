@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {
-  getAuth,
   onAuthStateChanged,
   signInAnonymously,
   signOut,
-} from "firebase/auth"; // Update imports
+} from "firebase/auth";
 import { auth } from "@/firebase";
 
 export const SignInButton = () => {
