@@ -1,4 +1,5 @@
 import useAuthentication from "../services/useAuthentication";
+import Link from "next/link";
 
 export const SignIn = () => {
   const { email, password, setEmail, setPassword, signIn } =
@@ -64,12 +65,12 @@ export const SignIn = () => {
               </div>
               <p className="text-center text-sm text-gray-500">
                 Don&#x27;t have an account yet?{" "}
-                <a
-                  href="#!"
+                <Link
+                  href="/signUp"
                   className="font-semibold text-gray-600 hover:underline focus:text-gray-800 focus:outline-none"
                 >
                   Sign up
-                </a>
+                </Link>
                 .
               </p>
             </form>
